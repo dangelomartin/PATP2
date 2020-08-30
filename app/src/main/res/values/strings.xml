@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">PA-TP2</string>
+    <string name="itemMenu_addContact">Agregar Contactos</string>
+    <string name="itemMenu_listContact">Listado de Contactos</string>
+    <string name="tw_contactForm">FORMULARIO DE CONTACTO</string>
+    <string name="tw_firstname">NOMBRE</string>
+    <string name="tw2_firstname">Nombre</string>
+    <string name="tw_lastname">APELLIDO</string>
+    <string name="tw2_lastname">Apellido</string>
+    <string name="tw_phone">TELEFONO</string>
+    <string name="tw2_phone">Telefono</string>
+    <string name="tw_email">EMAIL</string>
+    <string name="tw2_email">Email</string>
+    <string name="tw_adress">DIRECCION</string>
+    <string name="tw2_adress">Direccion</string>
+    <string name="tw_date">FECHA DE NACIMIENTO</string>
+    <string name="tw2_date">Fecha de Nacimiento</string>
+    <string name="tw_Button">CONTINUAR</string>
+    <string name="rd_1">Primario Incompleto</string>
+    <string name="rd_2">Primario Completo</string>
+    <string name="rd_3">Secundario Incompleto</string>
+    <string name="rd_4">Secundario Completo</string>
+    <string name="rd_5">Otros</string>
+    <string name="tw_nivel">NIVEL DE ESTUDIOS ALCANZADOS</string>
+    <string name="tw_intereses">INTERESES</string>
+    <string name="tw_intereses1">Deporte</string>
+    <string name="tw_intereses2">Arte</string>
+    <string name="tw_intereses3">Musica</string>
+    <string name="tw_intereses4">Tecnologia</string>
+    <string name="tw_desea">DESEA RECIBIR INFORMACION?</string>
+    <string name="tw_si">SI</string>
+    <string name="bt_guardar">GUARDAR</string>
+    <string name="tw_info">Este es un formulario destinado al registro de personas,
+        sus datos personales e intereses.</string>
+</resources>

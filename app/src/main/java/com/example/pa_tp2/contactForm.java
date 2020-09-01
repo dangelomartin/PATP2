@@ -32,7 +32,7 @@ public class contactForm extends AppCompatActivity {
 
         String [] options = {"Casa","Trabajo", "Movil"};
 
-        ArrayAdapter <String> adapter = new ArrayAdapter<String>
+        ArrayAdapter <String> adapter = new ArrayAdapter<>
                 (this, android.R.layout.simple_spinner_item, options);
 
         spinnerEmail.setAdapter(adapter);
@@ -40,24 +40,23 @@ public class contactForm extends AppCompatActivity {
 
     }
 
-    //Metodo para mostrar u ocultar el menu
+    // Metodo para mostrar u ocultar el menu
     public boolean onCreateOptionsMenu (Menu menu){
         getMenuInflater().inflate(R.menu.mainmenu, menu);
+
+        // Deshabilito "Agregar contactos" en la vista de agregar contactos.
+        menu.getItem(0).setEnabled(false);
+
         return true;
     }
-    // toma el item seleccionado en el menu
-    public boolean onOptionsItemSelected(MenuItem item){
-        int selected = item.getItemId();
 
-        if(selected == R.id.addContact){
-            Intent intent = new Intent (this, contactForm.class);
-            startActivity(intent);
-        } else if(selected == R.id.listContact){
-            Intent intent = new Intent (this, contactForm.class);
-            startActivity(intent);
+    // Toma el item seleccionado en el menu
+    public boolean onOptionsItemSelected(MenuItem item){
+        if (item.getItemId() == R.id.listContact) {
+            startActivity(new Intent(this, contactForm2.class));
+            finish();
         }
+
         return super.onOptionsItemSelected(item);
     }
-
-
 }

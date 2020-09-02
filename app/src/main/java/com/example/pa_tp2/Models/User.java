@@ -4,6 +4,7 @@ import android.content.ContentValues;
 
 import com.example.pa_tp2.Database.ContactsTable;
 import com.example.pa_tp2.Exceptions.UserException;
+import com.example.pa_tp2.Interfaces.Entity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,7 +14,7 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-public class User {
+public class User implements Entity {
     private String firstName;
     private String lastName;
     private Integer phone;
@@ -85,10 +86,10 @@ public class User {
     }
 
     public User setEmail(String email) throws UserException {
-        Pattern pattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
+        Pattern pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
         // Si no matchea, no es un email válido
-        if (!pattern.matcher(email).matches()) {
+        if (!pattern.matcher(email).find()) {
             throw new UserException("El E-Mail ingresado no es válido");
         }
 
@@ -151,7 +152,7 @@ public class User {
     }
 
     public User setStudy(Integer study) throws UserException {
-        if (study == null || study == 0) {
+        if (study == null || study == 0 || study > 4) {
             throw new UserException("Debe seleccionar un tipo de estudio");
         }
 
@@ -164,11 +165,7 @@ public class User {
         return interests;
     }
 
-    public User setInterests(List<Integer> interests) throws UserException {
-        if (interests.size() == 0) {
-            throw new UserException("Debe seleccionar un tipo de estudio");
-        }
-
+    public User setInterests(List<Integer> interests) {
         this.interests = interests;
 
         return this;

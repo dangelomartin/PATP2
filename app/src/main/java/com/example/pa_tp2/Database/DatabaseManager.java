@@ -1,8 +1,11 @@
 package com.example.pa_tp2.Database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.example.pa_tp2.Interfaces.Entity;
 
 public class DatabaseManager extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
@@ -37,5 +40,16 @@ public class DatabaseManager extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // No hay operaciones
+    }
+
+    public long save(String tableName, Entity entity) {
+        return this.getWritableDatabase().insert(
+                tableName,
+                null,
+                entity.toContentValues());
+    }
+
+    public Cursor find(String query) {
+        return this.getReadableDatabase().rawQuery(query, null);
     }
 }

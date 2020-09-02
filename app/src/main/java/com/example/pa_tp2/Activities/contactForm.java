@@ -1,7 +1,5 @@
 package com.example.pa_tp2.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,7 +9,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pa_tp2.Builders.UserBuilder;
 import com.example.pa_tp2.R;
@@ -21,31 +20,18 @@ import java.util.Objects;
 
 public class contactForm extends AppCompatActivity {
 
-    private Spinner spinnerEmail, spinnerPhone;
-    private EditText firstName,lastName,phone,email,address,date;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_form);
-
-        //toma de datos:
-        firstName = findViewById(R.id.input_firstname);
-        lastName = findViewById(R.id.input_lastname);
-        phone = findViewById(R.id.input_phone);
-        address = findViewById(R.id.input_address);
-        email = findViewById(R.id.input_email);
-        date = findViewById(R.id.input_date);
-        spinnerEmail = findViewById(R.id.spinnerEmail);
-        spinnerPhone = findViewById(R.id.spinnerPhone);
 
         String [] options = {"Casa","Trabajo", "Movil"};
 
         ArrayAdapter <String> adapter = new ArrayAdapter<>
                 (this, android.R.layout.simple_spinner_item, options);
 
-        spinnerEmail.setAdapter(adapter);
-        spinnerPhone.setAdapter(adapter);
+        ((Spinner) findViewById(R.id.spinnerEmail)).setAdapter(adapter);
+        ((Spinner) findViewById(R.id.spinnerPhone)).setAdapter(adapter);
     }
 
     // Metodo para mostrar u ocultar el menu
@@ -74,11 +60,16 @@ public class contactForm extends AppCompatActivity {
                     ((EditText) findViewById(R.id.input_firstname)).getText().toString(),
                     ((EditText) findViewById(R.id.input_lastname)).getText().toString(),
                     ((EditText) findViewById(R.id.input_phone)).getText().toString(),
-                    ((EditText) findViewById(R.id.input_address)).getText().toString(),
                     ((EditText) findViewById(R.id.input_email)).getText().toString(),
+                    ((EditText) findViewById(R.id.input_address)).getText().toString(),
                     ((EditText) findViewById(R.id.input_date)).getText().toString(),
                     ((Spinner) findViewById(R.id.spinnerEmail)).getSelectedItemPosition(),
                     ((Spinner) findViewById(R.id.spinnerPhone)).getSelectedItemPosition());
+
+            Snackbar snackbar = Snackbar.make(view, "Excelente!", Snackbar.LENGTH_SHORT);
+            snackbar.getView().setBackgroundColor(Color.GREEN);
+            snackbar.setDuration(3500); // 3 segundos y medio
+            snackbar.show();
 
             startActivity(new Intent(this, contactForm2.class));
             finish();

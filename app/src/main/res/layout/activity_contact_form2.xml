@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text_FormularioDeContacto2" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/study"
         android:layout_width="401dp"
         android:layout_height="169dp"
         android:layout_marginTop="29dp"
@@ -39,31 +39,32 @@
         app:layout_constraintTop_toBottomOf="@+id/text_info2">
 
         <RadioButton
-            android:id="@+id/rd_primarioIncompleto"
+            android:id="@+id/rb_0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/rd_1" />
 
         <RadioButton
-            android:id="@+id/rd_primarioCompleto"
+            android:id="@+id/rb_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/rd_2" />
 
         <RadioButton
-            android:id="@+id/rd_secundarioIncompleto"
+            android:id="@+id/rb_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/rd_3" />
 
         <RadioButton
-            android:id="@+id/rd_secundarioCompleto"
+            android:id="@+id/rb_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/rd_4" />
 
         <RadioButton
-            android:id="@+id/rd_otros"
+            android:id="@+id/rb_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/rd_5" />
@@ -77,10 +78,10 @@
         android:layout_marginTop="52dp"
         android:text="@string/tw_intereses1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/study" />
 
     <CheckBox
-        android:id="@+id/checkBox7"
+        android:id="@+id/cb_arte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
@@ -90,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cb_deporte" />
 
     <CheckBox
-        android:id="@+id/checkBox8"
+        android:id="@+id/cb_musica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
@@ -99,10 +100,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/cb_deporte"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/study" />
 
     <CheckBox
-        android:id="@+id/checkBox9"
+        android:id="@+id/cb_techno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
@@ -110,20 +111,21 @@
         android:text="@string/tw_intereses4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.195"
-        app:layout_constraintStart_toEndOf="@+id/checkBox7"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox8" />
+        app:layout_constraintStart_toEndOf="@+id/cb_arte"
+        app:layout_constraintTop_toBottomOf="@+id/cb_musica" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/receiveInformation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="60dp"
-        android:text="@string/tw_si"
+        android:text="@string/tw_no"
+        android:textAlignment="textEnd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.771"
         app:layout_constraintStart_toEndOf="@+id/tw_info"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox9" />
+        app:layout_constraintTop_toBottomOf="@+id/cb_techno" />
 
     <TextView
         android:id="@+id/tw_info"
@@ -133,7 +135,7 @@
         android:layout_marginTop="40dp"
         android:text="@string/tw_desea"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox7" />
+        app:layout_constraintTop_toBottomOf="@+id/cb_arte" />
 
     <TextView
         android:id="@+id/tw_Intereses"
@@ -143,19 +145,20 @@
         android:layout_marginTop="12dp"
         android:text="@string/tw_intereses"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/study" />
 
     <Button
         android:id="@+id/btn_guarar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:onClick="save"
         android:text="@string/bt_guardar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.829"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch1"
+        app:layout_constraintTop_toBottomOf="@+id/receiveInformation"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,7 +28,7 @@
     <string name="tw_intereses3">Musica</string>
     <string name="tw_intereses4">Tecnologia</string>
     <string name="tw_desea">DESEA RECIBIR INFORMACION?</string>
-    <string name="tw_si">SI</string>
+    <string name="tw_no">NO</string>
     <string name="bt_guardar">GUARDAR</string>
     <string name="tw_info">Este es un formulario destinado al registro de personas,
         sus datos personales e intereses.</string>

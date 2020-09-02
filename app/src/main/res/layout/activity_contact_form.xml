@@ -152,7 +152,7 @@
                 android:inputType="date" />
 
             <Button
-                android:id="@+id/btn_Continue"
+                android:id="@+id/btn_guardar"
                 android:layout_width="114dp"
                 android:layout_height="wrap_content"
                 android:onClick="saveForm"

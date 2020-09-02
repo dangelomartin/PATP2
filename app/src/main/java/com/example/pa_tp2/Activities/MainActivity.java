@@ -1,11 +1,13 @@
-package com.example.pa_tp2;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.pa_tp2.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.pa_tp2.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".contactForm">
+    tools:context=".Activities.contactForm">
 
     <TextView
         android:id="@+id/text_FormularioDeContacto"
@@ -126,7 +126,7 @@
                 android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/input_adress"
+                android:id="@+id/input_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
@@ -155,6 +155,7 @@
                 android:id="@+id/btn_Continue"
                 android:layout_width="114dp"
                 android:layout_height="wrap_content"
+                android:onClick="saveForm"
                 android:text="@string/tw_Button" />
 
         </LinearLayout>

@@ -51,8 +51,28 @@ public class contactForm2 extends AppCompatActivity {
     }
 
     public void save(View view) {
-        List<Integer> interests = new ArrayList<>();
+        try {
+            findViewById(R.id.btn_guardar).setEnabled(false);
+            List<Integer> interests = new ArrayList<>();
+            Integer study = retrieveData(interests);
 
+            User user = UserBuilder.buildComplete(
+                    study,
+                    ((Switch) findViewById(R.id.receiveInformation)).isChecked(),
+                    interests);
+
+            UserService.saveUser(this, user);
+        } catch (Exception e) {
+            Snackbar snackbar = Snackbar.make(view, Objects.requireNonNull(e.getMessage()), Snackbar.LENGTH_SHORT);
+            snackbar.getView().setBackgroundColor(Color.RED);
+            snackbar.setDuration(3500); // 3 segundos y medio
+            snackbar.show();
+        } finally {
+            findViewById(R.id.btn_guardar).setEnabled(true);
+        }
+    }
+
+    private Integer retrieveData(List<Integer> interests) {
         if (((CheckBox) findViewById(R.id.cb_arte)).isChecked()) {
             interests.add(Interests.arts);
         }
@@ -69,18 +89,8 @@ public class contactForm2 extends AppCompatActivity {
             interests.add(Interests.technology);
         }
 
-        try {
-            User user = UserBuilder.buildComplete(
-                    ((RadioGroup) findViewById(R.id.study)).getCheckedRadioButtonId(), // Todo: ver esto
-                    ((Switch) findViewById(R.id.receiveInformation)).isChecked(),
-                    interests);
+        RadioGroup radioGroup = ((RadioGroup) findViewById(R.id.study));
 
-            UserService.saveUser(this, user);
-        } catch (Exception e) {
-            Snackbar snackbar = Snackbar.make(view, Objects.requireNonNull(e.getMessage()), Snackbar.LENGTH_SHORT);
-            snackbar.getView().setBackgroundColor(Color.RED);
-            snackbar.setDuration(3500); // 3 segundos y medio
-            snackbar.show();
-        }
+        return radioGroup.indexOfChild(radioGroup.findViewById(radioGroup.getCheckedRadioButtonId()));
     }
 }

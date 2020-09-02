@@ -56,6 +56,8 @@ public class contactForm extends AppCompatActivity {
 
     public void saveForm(View view) {
         try {
+            findViewById(R.id.btn_guardar).setEnabled(false);
+
             UserBuilder.buildBase(
                     ((EditText) findViewById(R.id.input_firstname)).getText().toString(),
                     ((EditText) findViewById(R.id.input_lastname)).getText().toString(),
@@ -78,6 +80,8 @@ public class contactForm extends AppCompatActivity {
             snackbar.getView().setBackgroundColor(Color.RED);
             snackbar.setDuration(3500); // 3 segundos y medio
             snackbar.show();
+        } finally {
+            findViewById(R.id.btn_guardar).setEnabled(true);
         }
     }
 }

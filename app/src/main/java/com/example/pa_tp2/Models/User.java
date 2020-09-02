@@ -189,7 +189,9 @@ public class User implements Entity {
         values.put(ContactsTable.Entry.ADDRESS, this.address);
         values.put(ContactsTable.Entry.BORN_DATE, this.bornDate);
         values.put(ContactsTable.Entry.EMAIL, this.email);
+        values.put(ContactsTable.Entry.EMAIL_TYPE, this.email);
         values.put(ContactsTable.Entry.PHONE, this.phone);
+        values.put(ContactsTable.Entry.PHONE_TYPE, this.phone);
         values.put(ContactsTable.Entry.STUDY, this.study);
         values.put(ContactsTable.Entry.RECEIVE_INFORMATION, this.receiveInformation);
 

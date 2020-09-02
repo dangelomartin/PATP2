@@ -28,8 +28,6 @@ public class contactForm2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        UserService.getUsers(this);
-
         setContentView(R.layout.activity_contact_form2);
     }
 

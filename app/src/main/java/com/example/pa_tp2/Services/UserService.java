@@ -44,10 +44,9 @@ public class UserService {
                             .setAddress(cursor.getString(cursor.getColumnIndex(ContactsTable.Entry.ADDRESS)))
                             .setBornDate(cursor.getString(cursor.getColumnIndex(ContactsTable.Entry.BORN_DATE)))
                             .setEmail(cursor.getString(cursor.getColumnIndex(ContactsTable.Entry.EMAIL)))
-                            //.setEmailType(cursor.getInt(cursor.getColumnIndex(ContactsTable.Entry.EMAIL_TYPE)))
-                            .setEmailType(1)
+                            .setEmailType(cursor.getInt(cursor.getColumnIndex(ContactsTable.Entry.EMAIL_TYPE)))
                             .setPhone(cursor.getString(cursor.getColumnIndex(ContactsTable.Entry.PHONE)))
-                            .setPhoneType(1)
+                            .setEmailType(cursor.getInt(cursor.getColumnIndex(ContactsTable.Entry.PHONE_TYPE)))
                             .setReceiveInformation(cursor.getInt(cursor.getColumnIndex(ContactsTable.Entry.RECEIVE_INFORMATION)) == 1)
                             .setStudy(cursor.getInt(cursor.getColumnIndex(ContactsTable.Entry.STUDY)))
                             ;

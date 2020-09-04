@@ -40,9 +40,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // No hay operaciones
-    }
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
 
     public long save(String tableName, Entity entity) {
         return this.getWritableDatabase().insert(

@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class contactForm2 extends AppCompatActivity {
+public class ContactForm2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,16 +35,19 @@ public class contactForm2 extends AppCompatActivity {
     public boolean onCreateOptionsMenu (Menu menu){
         getMenuInflater().inflate(R.menu.mainmenu, menu);
 
-        // Deshabilito "Listado de contactos" en la vista de listado de contactos.
-        menu.getItem(1).setEnabled(false);
-
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-        if (item.getItemId() == R.id.addContact) {
-            startActivity(new Intent(this, contactForm.class));
-            finish();
+        switch (item.getItemId()) {
+            case R.id.addContact: {
+                this.redirectTo(ContactForm.class);
+                break;
+            }
+            case R.id.listContact: {
+                this.redirectTo(ListContacts.class);
+                break;
+            }
         }
 
         return super.onOptionsItemSelected(item);
@@ -62,6 +65,7 @@ public class contactForm2 extends AppCompatActivity {
                     interests);
 
             UserService.saveUser(this, user);
+            this.redirectTo(ListContacts.class);
         } catch (Exception e) {
             Snackbar snackbar = Snackbar.make(view, Objects.requireNonNull(e.getMessage()), Snackbar.LENGTH_SHORT);
             snackbar.getView().setBackgroundColor(Color.RED);
@@ -70,6 +74,11 @@ public class contactForm2 extends AppCompatActivity {
         } finally {
             findViewById(R.id.btn_guardar).setEnabled(true);
         }
+    }
+
+    private void redirectTo(Class cls) {
+        startActivity(new Intent (this, cls));
+        finish();
     }
 
     private Integer retrieveData(List<Integer> interests) {

@@ -18,7 +18,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Objects;
 
-public class contactForm extends AppCompatActivity {
+public class ContactForm extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class contactForm extends AppCompatActivity {
     // Toma el item seleccionado en el menu
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == R.id.listContact) {
-            startActivity(new Intent(this, contactForm2.class));
+            startActivity(new Intent(this, ListContacts.class));
             finish();
         }
 
@@ -73,7 +73,7 @@ public class contactForm extends AppCompatActivity {
             snackbar.setDuration(3500); // 3 segundos y medio
             snackbar.show();
 
-            startActivity(new Intent(this, contactForm2.class));
+            startActivity(new Intent(this, ContactForm2.class));
             finish();
         } catch (Exception e) {
             Snackbar snackbar = Snackbar.make(view, Objects.requireNonNull(e.getMessage()), Snackbar.LENGTH_SHORT);

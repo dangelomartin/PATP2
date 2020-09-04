@@ -2,7 +2,6 @@ package com.example.pa_tp2.Models;
 
 import android.content.ContentValues;
 
-import com.example.pa_tp2.Database.ContactsTable;
 import com.example.pa_tp2.Database.InterestsContactTable;
 import com.example.pa_tp2.Interfaces.Entity;
 

@@ -4,20 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.listContacts">
+    tools:context=".Activities.ListContacts">
 
     <ScrollView
         android:id="@+id/listcontactsView"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:background="#FAFAFA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.06">
 
+        <HorizontalScrollView
+            android:id="@+id/hscrll1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayout1"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TableLayout
+                    android:id="@+id/table_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="#FAFAFA"
+                    tools:ignore="UselessParent">
+                </TableLayout>
+            </RelativeLayout>
+        </HorizontalScrollView>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

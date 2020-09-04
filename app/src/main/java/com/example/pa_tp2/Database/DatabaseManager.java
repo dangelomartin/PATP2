@@ -13,7 +13,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     public DatabaseManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        //context.deleteDatabase(DATABASE_NAME);
     }
 
     @Override

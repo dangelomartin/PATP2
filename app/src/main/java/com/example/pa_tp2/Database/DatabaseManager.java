@@ -13,6 +13,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     public DatabaseManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        //context.deleteDatabase(DATABASE_NAME);
     }
 
     @Override
@@ -24,7 +25,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 + ContactsTable.Entry.EMAIL + " TEXT NOT NULL,"
                 + ContactsTable.Entry.EMAIL_TYPE + " TEXT NOT NULL,"
                 + ContactsTable.Entry.PHONE + " INTEGER NOT NULL,"
-                + ContactsTable.Entry.PHONE_TYPE + " INTEGER NOT NULL,"
+                + ContactsTable.Entry.PHONE_TYPE + " TEXT NOT NULL,"
                 + ContactsTable.Entry.ADDRESS + " TEXT NOT NULL,"
                 + ContactsTable.Entry.STUDY + " INTEGER NOT NULL,"
                 + ContactsTable.Entry.RECEIVE_INFORMATION + " INTEGER NOT NULL,"

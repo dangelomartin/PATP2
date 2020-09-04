@@ -38,20 +38,24 @@ public class UserProtocol {
     }
 
     public static String getInterests(List<Integer> interests) {
+        if (interests.size() == 0) {
+            return "No tiene intereses";
+        }
+
         StringBuilder stringBuilder = new StringBuilder();
 
         interests.forEach(interest -> {
             if (interest.equals(Interests.arts)) {
-                stringBuilder.append("Arte");
+                stringBuilder.append("Arte, ");
             } else if (interest.equals(Interests.music)) {
-                stringBuilder.append("Musica");
+                stringBuilder.append("Musica, ");
             } else if (interest.equals(Interests.sports)) {
-                stringBuilder.append("Deportes");
+                stringBuilder.append("Deportes, ");
             } else if (interest.equals(Interests.technology)) {
-                stringBuilder.append("Tecnología");
+                stringBuilder.append("Tecnología, ");
             }
         });
 
-        return stringBuilder.toString();
+        return stringBuilder.toString().substring(0, stringBuilder.length() - 2);
     }
 }

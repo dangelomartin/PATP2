@@ -197,7 +197,7 @@ public class User implements Entity {
     @Override
     public String toString() {
         return "Telefono: " + this.getPhone() + " \n" +
-                "Tipo de telefono: " + UserProtocol.getSpinnerName(this.getPhoneType()) + " \n" +
+                //"Tipo de telefono: " + UserProtocol.getSpinnerName(this.getPhoneType()) + " \n" +
                 "E-Mail: " + this.getEmail() + " \n" +
                 "Tipo de E-Mail: " + UserProtocol.getSpinnerName(this.getEmailType()) + " \n" +
                 "Domicilio: " + this.getAddress() + " \n" +

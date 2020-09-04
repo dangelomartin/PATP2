@@ -4,12 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.pa_tp2.Mocks.UserMock;
 import com.example.pa_tp2.R;
+import com.example.pa_tp2.Services.UserService;
 
 public class MainActivity extends AppCompatActivity {
+    private static Boolean buttonClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,5 +44,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void fillDatabase(View view) {
+        if (buttonClicked) return;
+
+        Button button = (Button) findViewById(R.id.button);
+
+        UserMock.mockList().forEach(user -> UserService.saveUser(this, user));
+
+        button.setEnabled(false);
+        button.setText("Datos agregados exitosamente ⚡️");
+        buttonClicked = true;
     }
 }

@@ -5,6 +5,8 @@ import android.content.ContentValues;
 import com.example.pa_tp2.Database.ContactsTable;
 import com.example.pa_tp2.Exceptions.UserException;
 import com.example.pa_tp2.Interfaces.Entity;
+import com.example.pa_tp2.Protocols.StringProtocol;
+import com.example.pa_tp2.Protocols.UserProtocol;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,6 +17,7 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class User implements Entity {
+    private Integer id;
     private String firstName;
     private String lastName;
     private Integer phone;
@@ -27,6 +30,16 @@ public class User implements Entity {
     private Boolean receiveInformation;
     private List<Integer> interests;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public User setId(Integer id) {
+        this.id = id;
+
+        return this;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -36,7 +49,7 @@ public class User implements Entity {
             throw new UserException("La longitud del nombre debe ser mayor a 3 y menor que 20 caracteres.");
         }
 
-        this.firstName = firstName;
+        this.firstName = StringProtocol.capitalize(firstName);
 
         return this;
     }
@@ -50,7 +63,7 @@ public class User implements Entity {
             throw new UserException("La longitud del apellido debe ser mayor a 3 y menor que 20 caracteres.");
         }
 
-        this.lastName = lastName;
+        this.lastName = StringProtocol.capitalize(lastName);
 
         return this;
     }
@@ -93,7 +106,7 @@ public class User implements Entity {
             throw new UserException("El E-Mail ingresado no es válido");
         }
 
-        this.email = email;
+        this.email = email.toLowerCase();
 
         return this;
     }
@@ -117,7 +130,7 @@ public class User implements Entity {
             throw new UserException("La longitud de la dirección debe ser mayor a 5 y menor que 40 caracteres.");
         }
 
-        this.address = address;
+        this.address = StringProtocol.capitalize(address);;
 
         return this;
     }
@@ -181,6 +194,19 @@ public class User implements Entity {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return "Telefono: " + this.getPhone() + " \n" +
+                "Tipo de telefono: " + UserProtocol.getSpinnerName(this.getPhoneType()) + " \n" +
+                "E-Mail: " + this.getEmail() + " \n" +
+                "Tipo de E-Mail: " + UserProtocol.getSpinnerName(this.getEmailType()) + " \n" +
+                "Domicilio: " + this.getAddress() + " \n" +
+                "Fecha de nacimiento: " + this.getBornDate() + " \n" +
+                "Estudio alcanzado: " + UserProtocol.getStudyName(this.getStudy()) + " \n" +
+                "Intereses: " + UserProtocol.getInterests(this.getInterests()) + " \n" +
+                "Recibir informacion? " + (this.getReceiveInformation() ? "Si" : "No");
+    }
+
     public ContentValues toContentValues() {
         ContentValues values = new ContentValues();
 
@@ -189,9 +215,9 @@ public class User implements Entity {
         values.put(ContactsTable.Entry.ADDRESS, this.address);
         values.put(ContactsTable.Entry.BORN_DATE, this.bornDate);
         values.put(ContactsTable.Entry.EMAIL, this.email);
-        values.put(ContactsTable.Entry.EMAIL_TYPE, this.email);
+        values.put(ContactsTable.Entry.EMAIL_TYPE, this.emailType);
         values.put(ContactsTable.Entry.PHONE, this.phone);
-        values.put(ContactsTable.Entry.PHONE_TYPE, this.phone);
+        values.put(ContactsTable.Entry.PHONE_TYPE, this.phoneType);
         values.put(ContactsTable.Entry.STUDY, this.study);
         values.put(ContactsTable.Entry.RECEIVE_INFORMATION, this.receiveInformation);
 

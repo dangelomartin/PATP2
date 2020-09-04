@@ -22,17 +22,22 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.mainmenu, menu);
         return true;
     }
+
     // toma el item seleccionado en el menu
     public boolean onOptionsItemSelected(MenuItem item){
-        int selected = item.getItemId();
-
-        if(selected == R.id.addContact){
-            Intent intent = new Intent (this, contactForm.class);
-            startActivity(intent);
-        } else if(selected == R.id.listContact){
-            Intent intent = new Intent (this, contactForm2.class);
-            startActivity(intent);
+        switch (item.getItemId()) {
+            case R.id.addContact: {
+                startActivity(new Intent (this, ContactForm.class));
+                finish();
+                break;
+            }
+            case R.id.listContact: {
+                startActivity(new Intent (this, ListContacts.class));
+                finish();
+                break;
+            }
         }
+
         return super.onOptionsItemSelected(item);
     }
 }

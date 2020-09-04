@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.contactForm2">
+    tools:context=".Activities.ContactForm2">
 
     <TextView
         android:id="@+id/text_FormularioDeContacto2"

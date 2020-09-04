@@ -9,8 +9,6 @@ import com.example.pa_tp2.Database.InterestsContactTable;
 import com.example.pa_tp2.Models.User;
 import com.example.pa_tp2.Models.UserInterest;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,8 +23,8 @@ public class UserService {
                     InterestsContactTable.Entry.TABLE_NAME,
                     new UserInterest(insertedId, interest)
             ));
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (Exception ignored) {
+            System.out.println(ignored);
         }
     }
 
@@ -39,6 +37,7 @@ public class UserService {
             do {
                 try {
                     User user = new User()
+                            .setId(cursor.getInt(cursor.getColumnIndex("_id")))
                             .setFirstName(cursor.getString(cursor.getColumnIndex(ContactsTable.Entry.NAME)))
                             .setLastName(cursor.getString(cursor.getColumnIndex(ContactsTable.Entry.LAST_NAME)))
                             .setAddress(cursor.getString(cursor.getColumnIndex(ContactsTable.Entry.ADDRESS)))

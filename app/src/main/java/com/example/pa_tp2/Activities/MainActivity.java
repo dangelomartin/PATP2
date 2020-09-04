@@ -10,8 +10,12 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pa_tp2.Mocks.UserMock;
+import com.example.pa_tp2.Models.User;
 import com.example.pa_tp2.R;
 import com.example.pa_tp2.Services.UserService;
+
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class MainActivity extends AppCompatActivity {
     private static Boolean buttonClicked = false;
@@ -20,6 +24,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AtomicReference<Integer> countMocks = new AtomicReference<>(0);
+        List<User> users = UserMock.mockList();
+
+        // Busca cuantos usuarios mockeados hay insertados
+        UserService.getUsers(this).forEach(user ->
+                users.forEach(mockUser ->
+                        countMocks.updateAndGet(v ->
+                                v + (mockUser.getEmail().equals(user.getEmail()) ? 1 : 0))));
+
+        if (countMocks.get() >= 3) {
+            Button button = (Button) findViewById(R.id.button);
+            button.setEnabled(false);
+            button.setText("Ya tienes contactos de prueba creados 🥳️");
+            buttonClicked = true;
+        }
     }
 
     //Metodo para mostrar u ocultar el menu
@@ -33,12 +52,10 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.addContact: {
                 startActivity(new Intent (this, ContactForm.class));
-                finish();
                 break;
             }
             case R.id.listContact: {
                 startActivity(new Intent (this, ListContacts.class));
-                finish();
                 break;
             }
         }
@@ -54,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         UserMock.mockList().forEach(user -> UserService.saveUser(this, user));
 
         button.setEnabled(false);
-        button.setText("Datos agregados exitosamente ⚡️");
+        button.setText("Contactos agregados exitosamente ⚡️");
         buttonClicked = true;
     }
 }
